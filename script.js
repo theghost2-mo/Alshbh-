@@ -1695,5 +1695,70 @@ openChatbot.addEventListener('click', () => {
 
 
 
+// تهيئة Firebase للمصادقة
+const auth = firebase.auth();
 
+// عناصر واجهة المستخدم
+const loginModal = document.getElementById('loginModal');
+const facebookLogin = document.getElementById('facebookLogin');
+const googleLogin = document.getElementById('googleLogin');
+const guestLogin = document.getElementById('guestLogin');
+
+// متغير لحالة المستخدم
+let userLoggedIn = false;
+
+// عند تحميل الصفحة، تحقق من حالة الدخول
+document.addEventListener('DOMContentLoaded', function() {
+    // إذا كان المستخدم قد اختار الزائر من قبل، تخطي نافذة الدخول
+    if (localStorage.getItem('guestMode') {
+        loginModal.style.display = 'none';
+        return;
+    }
+    
+    // تحقق من تسجيل الدخول عبر فيسبوك/جوجل
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            userLoggedIn = true;
+            loginModal.style.display = 'none';
+            showNotification('مرحباً بعودتك!', `تم الدخول كـ ${user.displayName || user.email}`);
+        }
+    });
+});
+
+// الدخول بفيسبوك
+facebookLogin.addEventListener('click', function() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    auth.signInWithPopup(provider)
+        .then(result => {
+            userLoggedIn = true;
+            loginModal.style.display = 'none';
+            showNotification('تم الدخول بنجاح', `مرحباً ${result.user.displayName}`);
+        })
+        .catch(error => {
+            console.error('خطأ في الدخول:', error);
+            alert('حدث خطأ أثناء محاولة الدخول بفيسبوك');
+        });
+});
+
+// الدخول بجوجل
+googleLogin.addEventListener('click', function() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider)
+        .then(result => {
+            userLoggedIn = true;
+            loginModal.style.display = 'none';
+            showNotification('تم الدخول بنجاح', `مرحباً ${result.user.displayName}`);
+        })
+        .catch(error => {
+            console.error('خطأ في الدخول:', error);
+            alert('حدث خطأ أثناء محاولة الدخول بجوجل');
+        });
+});
+
+// الدخول كزائر
+guestLogin.addEventListener('click', function() {
+    localStorage.setItem('guestMode', 'true');
+    loginModal.style.display = 'none';
+    showNotification('مرحباً بك!', 'أنت الآن تتصفح كزائر');
+});
 
