@@ -2133,3 +2133,53 @@ table th {
   border-bottom-right-radius: 5px;
 }
 
+
+
+/* أنماط نافذة تسجيل الدخول */
+.login-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.social-login-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.social-login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.social-login-btn i {
+    font-size: 18px;
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+
+.google {
+    background-color: #db4437;
+}
+
+.guest {
+    background-color: #4361ee;
+}
+
+/* إخفاء النافذة بعد الدخول */
+.hidden {
+    display: none !important;
+}
