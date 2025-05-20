@@ -2183,3 +2183,104 @@ table th {
 .hidden {
     display: none !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* أنماط شاشة تسجيل الدخول */
+.auth-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f7fa;
+    z-index: 1000;
+}
+
+.auth-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    text-align: center;
+}
+
+.auth-header {
+    margin-bottom: 30px;
+}
+
+.auth-header i {
+    font-size: 50px;
+    color: #4361ee;
+    margin-bottom: 15px;
+}
+
+.auth-header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #212529;
+}
+
+.auth-header p {
+    color: #adb5bd;
+    font-size: 16px;
+}
+
+.social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-social {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.btn-social:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-social i {
+    font-size: 18px;
+}
+
+.btn-social.google {
+    background-color: #4285F4;
+    color: white;
+}
+
+.btn-social.facebook {
+    background-color: #3b5998;
+    color: white;
+}
+
+.btn-social.twitter {
+    background-color: #1DA1F2;
+    color: white;
+}
