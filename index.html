@@ -1,29 +1,89 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-database-compat.js"></script>
-    
-    
-    <style>
-    /* الخلفية المؤقتة للتحميل السريع */
-    body {
-        background-color: #f5f5f5;
-    }
-</style>
     
     
     
     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محجوز - حجز الفنادق في اليمن</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="styles.css">
+    
+    
+     <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محجوز - حجز الفنادق في اليمن</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </head>
 <body>
+    
+    
+    
+     <!-- شاشة تسجيل الدخول (تظهر أولاً) -->
+    <div id="loginScreen" class="auth-container" style="display: block;">
+        <div class="auth-card">
+            <div class="auth-header">
+                <i class="fas fa-hotel"></i>
+                <h1>مرحباً بك في محجوز</h1>
+                <p>منصة حجز الفنادق الرائدة في اليمن</p>
+            </div>
+
+            <div class="social-login">
+                <button class="btn-social google" id="googleLogin">
+                    <i class="fab fa-google"></i> تسجيل الدخول بجوجل
+                </button>
+                <button class="btn-social facebook" id="facebookLogin">
+                    <i class="fab fa-facebook-f"></i> تسجيل الدخول بفيسبوك
+                </button>
+                <button class="btn-social twitter" id="twitterLogin">
+                    <i class="fab fa-twitter"></i> تسجيل الدخول بتويتر
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- المحتوى الرئيسي (يظهر بعد التسجيل) -->
+    <div id="mainContent" style="display: none;">
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <!-- شريط التنقل العلوي -->
     <nav class="navbar">
         <div class="container">
@@ -45,30 +105,6 @@
             <button class="menu-toggle"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
-
-
-<!-- نافذة تسجيل الدخول -->
-<div id="loginModal" class="modal" style="display: flex;">
-    <div class="modal-content animate__animated animate__fadeInDown">
-        <div class="auth-icon">
-            <i class="fas fa-user-circle"></i>
-        </div>
-        <h2>اختر طريقة الدخول</h2>
-        <div class="login-options">
-            <button class="social-login-btn facebook" id="facebookLogin">
-                <i class="fab fa-facebook-f"></i> الدخول بفيسبوك
-            </button>
-            <button class="social-login-btn google" id="googleLogin">
-                <i class="fab fa-google"></i> الدخول بجوجل
-            </button>
-            <button class="social-login-btn guest" id="guestLogin">
-                <i class="fas fa-user"></i> الدخول كزائر
-            </button>
-        </div>
-    </div>
-</div>
-
-    
 
     <!-- قائمة الجوال -->
     <div class="mobile-menu">
@@ -234,13 +270,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3><i class="fas fa-hotel"></i> محجوز</h3>
-                    <p>عوز تكتب اي هنا مثلا معلومات عن التطبيق لكن بشكل مميز.</p>
-                    
-                
-            
-            </div>
-        </div>
-    </footer>
+                    <p>منصة حجز الفنادق الرائدة في اليمن، نوفر لك تجربة حجز سهلة وسريعة وآمنة.</p>
+                  
 
     <!-- لوحة التحكم الإدارية -->
     <div id="adminPanel" class="admin-panel">
@@ -946,74 +977,17 @@
 
     <!-- مكتبة Chart.js للرسوم البيانية -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-<!-- Firebase App (Core SDK) -->
-<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-app-compat.js"></script>
-<!-- Firebase Realtime Database -->
-<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-database-compat.js"></script>
+      <!-- باقي محتوى الصفحة الرئيسية -->
+        <div class="container">
+            <h1>مرحباً بك في نظام حجز الفنادق</h1>
+            <!-- محتوى التطبيق هنا -->
+        </div>
+    </div>
 
-<script>
-  // إعداد Firebase باستخدام بيانات مشروعك
-  const firebaseConfig = {
-    apiKey: "AIzaSyDVwLER-g5AL8TH52Go2sTEbS7O-HwaimE",
-    authDomain: "mahjooz-aca56.firebaseapp.com",
-    projectId: "mahjooz-aca56",
-    storageBucket: "mahjooz-aca56.firebasestorage.app",
-    messagingSenderId: "339972782124",
-    appId: "1:339972782124:web:49dabf8ed86f0ebfae3989",
-    measurementId: "G-49LJS40ZG2",
-    databaseURL: "https://mahjooz-aca56-default-rtdb.firebaseio.com"
-  };
-
-  // تهيئة التطبيق وقاعدة البيانات
-  firebase.initializeApp(firebaseConfig);
-  const database = firebase.database();
-</script>
-    
-    
-    
-    
     <script src="script.js"></script>
-    
-    
     
 </body>
-</html>
+    </html>
