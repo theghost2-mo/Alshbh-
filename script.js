@@ -1762,3 +1762,97 @@ guestLogin.addEventListener('click', function() {
     showNotification('مرحباً بك!', 'أنت الآن تتصفح كزائر');
 });
 
+
+
+
+
+
+
+
+
+
+
+// Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDVwLER-g5AL8TH52Go2sTEbS7O-HwaimE",
+    authDomain: "mahjooz-aca56.firebaseapp.com",
+    projectId: "mahjooz-aca56",
+    storageBucket: "mahjooz-aca56.appspot.com",
+    messagingSenderId: "339972782124",
+    appId: "1:339972782124:web:49dabf8ed86f0ebfae3989",
+    measurementId: "G-49LJS40ZG2"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+// عناصر DOM
+const loginScreen = document.getElementById('loginScreen');
+const mainContent = document.getElementById('mainContent');
+const googleLoginBtn = document.getElementById('googleLogin');
+const facebookLoginBtn = document.getElementById('facebookLogin');
+const twitterLoginBtn = document.getElementById('twitterLogin');
+const logoutBtn = document.getElementById('logoutBtn');
+
+// تسجيل الدخول بجوجل
+function signInWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider)
+        .catch(error => {
+            console.error("Google Sign-In Error:", error);
+            alert("حدث خطأ أثناء تسجيل الدخول بجوجل");
+        });
+}
+
+// تسجيل الدخول بفيسبوك
+function signInWithFacebook() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    auth.signInWithPopup(provider)
+        .catch(error => {
+            console.error("Facebook Sign-In Error:", error);
+            alert("حدث خطأ أثناء تسجيل الدخول بفيسبوك");
+        });
+}
+
+// تسجيل الدخول بتويتر
+function signInWithTwitter() {
+    const provider = new firebase.auth.TwitterAuthProvider();
+    auth.signInWithPopup(provider)
+        .catch(error => {
+            console.error("Twitter Sign-In Error:", error);
+            alert("حدث خطأ أثناء تسجيل الدخول بتويتر");
+        });
+}
+
+// تسجيل الخروج
+function signOut() {
+    auth.signOut()
+        .catch(error => {
+            console.error("Sign Out Error:", error);
+            alert("حدث خطأ أثناء تسجيل الخروج");
+        });
+}
+
+// مراقبة حالة المصادقة
+auth.onAuthStateChanged(user => {
+    if (user) {
+        // المستخدم مسجل الدخول
+        console.log("User logged in:", user);
+        loginScreen.style.display = "none";
+        mainContent.style.display = "block";
+    } else {
+        // لا يوجد مستخدم مسجل الدخول
+        console.log("User logged out");
+        loginScreen.style.display = "block";
+        mainContent.style.display = "none";
+    }
+});
+
+// إضافة مستمعي الأحداث
+googleLoginBtn.addEventListener('click', signInWithGoogle);
+facebookLoginBtn.addEventListener('click', signInWithFacebook);
+twitterLoginBtn.addEventListener('click', signInWithTwitter);
+logoutBtn.addEventListener('click', signOut);
+
+// يمكنك إضافة المزيد من الوظائف هنا حسب احتياجات التطبيق
