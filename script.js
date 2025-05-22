@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
     displayNotifications();
     
     // تحميل البيانات من localStorage إذا وجدت
-    if (localStorage.getItem('hotelAppData')) {
+     {
         appData = JSON.parse(localStorage.getItem('hotelAppData'));
     }
     
