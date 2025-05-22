@@ -222,12 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
     displayRecentBookings();
     displayNotifications();
     
-    // تحميل البيانات من localStorage إذا وجدت
-     {
-        appData = JSON.parse(localStorage.getItem('hotelAppData'));
-    }
-    
-    // تحديث عدد الإشعارات غير المقروءة
+    //   // تحديث عدد الإشعارات غير المقروءة
     updateNotificationBadge();
 });
 
